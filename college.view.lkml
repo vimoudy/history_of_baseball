@@ -18,6 +18,7 @@ view: college {
   }
 
   dimension: name_full {
+    label: "Name"
     type: string
     sql: ${TABLE}.name_full ;;
   }

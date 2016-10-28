@@ -2,11 +2,13 @@ view: salary {
   sql_table_name: public.salary ;;
 
   dimension: league_id {
+    label: "League"
     type: string
     sql: ${TABLE}.league_id ;;
   }
 
   dimension: player_id {
+    label: "Player"
     type: string
     # hidden: true
     sql: ${TABLE}.player_id ;;
@@ -18,6 +20,7 @@ view: salary {
   }
 
   dimension: team_id {
+    label: "Team"
     type: string
     # hidden: true
     sql: ${TABLE}.team_id ;;

@@ -2,29 +2,33 @@ view: player_award {
   sql_table_name: public.player_award ;;
 
   dimension: award_id {
+    label: "Award Name"
     type: string
     sql: ${TABLE}.award_id ;;
   }
 
   dimension: league_id {
+    label: "League"
     type: string
     sql: ${TABLE}.league_id ;;
   }
 
   dimension: notes {
+    label: " Notes About the Award"
     type: string
     sql: ${TABLE}.notes ;;
   }
 
   dimension: player_id {
+    label: "Player"
     type: string
     # hidden: true
     sql: ${TABLE}.player_id ;;
   }
 
   dimension: tie {
-    type: string
-    sql: ${TABLE}.tie ;;
+    type: yesno
+    sql: ${TABLE}.tie = 'Y';;
   }
 
   dimension: year {

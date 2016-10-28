@@ -7,12 +7,14 @@ view: all_star {
   }
 
   dimension: game_num {
+    label: "Game Number"
     type: number
     sql: ${TABLE}.game_num ;;
   }
 
   dimension: gp {
-    type: number
+    label: "Game Played"
+    type: yesno
     sql: ${TABLE}.gp ;;
   }
 
@@ -28,6 +30,8 @@ view: all_star {
   }
 
   dimension: starting_pos {
+    label: "Starting Position"
+    description: "If player was game starter, the position played "
     type: number
     sql: ${TABLE}.starting_pos ;;
   }

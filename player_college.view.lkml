@@ -7,6 +7,7 @@ view: player_college {
   }
 
   dimension: player_id {
+    label: "Player"
     type: string
     # hidden: true
     sql: ${TABLE}.player_id ;;

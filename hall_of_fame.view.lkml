@@ -12,11 +12,12 @@ view: hall_of_fame {
   }
 
   dimension: inducted {
-    type: string
-    sql: ${TABLE}.inducted ;;
+    type: yesno
+    sql: ${TABLE}.inducted = 'Y';;
   }
 
   dimension: needed {
+    label: "Votes Needed"
     type: number
     sql: ${TABLE}.needed ;;
   }
@@ -33,6 +34,7 @@ view: hall_of_fame {
   }
 
   dimension: voteby {
+    label: "Votes By"
     type: string
     sql: ${TABLE}.voteby ;;
   }

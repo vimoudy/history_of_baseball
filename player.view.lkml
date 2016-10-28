@@ -8,75 +8,125 @@ view: player {
   }
 
   dimension: bats {
+    label: "Bats(Left, Right, Both)"
     type: string
-    sql: ${TABLE}.bats ;;
+    sql:  ;;
+    case: {
+      when: {
+        sql: ${TABLE}.bats = 'L' ;;
+        label: "Left"
+      }
+      when: {
+        sql: ${TABLE}.bats = 'R' ;;
+        label: "Right"
+      }
+      when: {
+        sql: ${TABLE}.bats = 'B' ;;
+        label: "Both"
+      }
+    }
   }
 
   dimension: bbref_id {
+    description: "ID used by Baseball Reference website"
     type: string
     sql: ${TABLE}.bbref_id ;;
   }
 
   dimension: birth_city {
+    hidden: yes
     type: string
     sql: ${TABLE}.birth_city ;;
   }
 
   dimension: birth_country {
+    hidden: yes
     type: string
     sql: ${TABLE}.birth_country ;;
   }
 
   dimension: birth_day {
+    hidden: yes
     type: number
     sql: ${TABLE}.birth_day ;;
   }
 
   dimension: birth_month {
+    hidden: yes
     type: number
     sql: ${TABLE}.birth_month ;;
   }
 
   dimension: birth_state {
+    hidden: yes
     type: string
     sql: ${TABLE}.birth_state ;;
   }
 
+  dimension: birth_place{
+    type: string
+    sql: ${birth_city} || ', ' || ${birth_state} || '. ' || ${birth_country} ;;
+  }
+
   dimension: birth_year {
+    hidden: yes
     type: number
     sql: ${TABLE}.birth_year ;;
   }
 
+  dimension_group: birthday {
+    type: time
+    timeframes: [date, month, year, day_of_month]
+    sql:  to_date(to_char(birth_year::real, '9999') || to_char(birth_month::real, '99') || to_char(birth_day::real, '99'), 'YYYY/MM/DD') ;;
+  }
+
   dimension: death_city {
+    hidden: yes
     type: string
     sql: ${TABLE}.death_city ;;
   }
 
   dimension: death_country {
+    hidden: yes
     type: string
     sql: ${TABLE}.death_country ;;
   }
 
   dimension: death_day {
+    hidden: yes
     type: number
     sql: ${TABLE}.death_day ;;
   }
 
   dimension: death_month {
+    hidden: yes
     type: number
     sql: ${TABLE}.death_month ;;
   }
 
   dimension: death_state {
+    hidden: yes
+    hidden: yes
     type: string
     sql: ${TABLE}.death_state ;;
   }
 
+  dimension: death_place {
+    type: string
+    sql: ${death_city} || ', ' || ${death_state} || '. ' || ${death_country} ;;
+  }
+
   dimension: death_year {
+    hidden: yes
     type: number
     sql: ${TABLE}.death_year ;;
   }
 
+  dimension_group: death_day {
+    type: time
+    timeframes: [date, month, year, day_of_month]
+    sql:  to_date(to_char(death_year::real, '9999') || to_char(death_month::real, '99') || to_char(death_day::real, '99'), 'YYYY/MM/DD') ;;
+  }
   dimension: debut {
     type: string
     sql: ${TABLE}.debut ;;
@@ -129,6 +179,6 @@ view: player {
 
   # ----- Sets of fields for drilling ------
   set: detail {
-    fields: [player_id, all_star.count, appearances.count, batting.count, batting_postseason.count, fielding.count, fielding_outfield.count, fielding_postseason.count, hall_of_fame.count, manager.count, manager_award.count, manager_award_vote.count, manager_half.count, pitching.count, pitching_postseason.count, player_award.count, player_award_vote.count, player_college.count, salary.count]
+    fields: [player_id, name_given, all_star.count, appearances.count, batting.count, batting_postseason.count, fielding.count, fielding_outfield.count, fielding_postseason.count, hall_of_fame.count, manager.count, manager_award.count, manager_award_vote.count, manager_half.count, pitching.count, pitching_postseason.count, player_award.count, player_award_vote.count, player_college.count, salary.count]
   }
 }

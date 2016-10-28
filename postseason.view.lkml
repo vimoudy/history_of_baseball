@@ -2,11 +2,13 @@ view: postseason {
   sql_table_name: public.postseason ;;
 
   dimension: league_id_loser {
+    label: "League that Lost"
     type: string
     sql: ${TABLE}.league_id_loser ;;
   }
 
   dimension: league_id_winner {
+    label: "League that Won"
     type: string
     sql: ${TABLE}.league_id_winner ;;
   }
@@ -17,16 +19,19 @@ view: postseason {
   }
 
   dimension: round {
+    description: "Level of playoffs"
     type: string
     sql: ${TABLE}.round ;;
   }
 
   dimension: team_id_loser {
+    label: "Losing Team"
     type: string
     sql: ${TABLE}.team_id_loser ;;
   }
 
   dimension: team_id_winner {
+    label: "Winning Team"
     type: string
     sql: ${TABLE}.team_id_winner ;;
   }
