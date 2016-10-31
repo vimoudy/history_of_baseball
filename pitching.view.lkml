@@ -40,6 +40,7 @@ view: pitching {
   dimension: era {
     label: "Earned Run Average"
     type: number
+    value_format_name: percent_2
     sql: ${TABLE}.era ;;
   }
 
