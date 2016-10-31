@@ -8,9 +8,9 @@ view: player {
   }
 
   dimension: bats {
-    label: "Bats(Left, Right, Both)"
+    label: "Bats"
+    description: "Left, Right, Both"
     type: string
-    sql:  ;;
     case: {
       when: {
         sql: ${TABLE}.bats = 'L' ;;
