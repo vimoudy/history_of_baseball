@@ -148,7 +148,7 @@ view: pitching {
   }
 
   dimension: stint {
-    label: "Oreders of Apperance within a Season"
+    label: "Orders of Apperance within a Season"
     type: number
     sql: ${TABLE}.stint ;;
   }
