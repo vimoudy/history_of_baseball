@@ -196,7 +196,19 @@ explore: pitching_postseason {
   }
 }
 
-explore: player {}
+explore: player {
+  join:  batting_postseason {
+    type: left_outer
+    sql_on: ${batting_postseason.player_id} = ${player.player_id} ;;
+    relationship: one_to_many
+  }
+
+  join:  batting {
+    type: left_outer
+    sql_on: ${batting.player_id} = ${player.player_id} ;;
+    relationship: one_to_many
+  }
+}
 
 explore: player_award {
   join: player {

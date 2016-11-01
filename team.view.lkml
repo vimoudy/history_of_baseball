@@ -88,6 +88,7 @@ view: team {
     label: "Earned Run Average"
     type: number
     sql: ${TABLE}.era ;;
+    value_format_name: decimal_2
   }
 
   dimension: fp {
