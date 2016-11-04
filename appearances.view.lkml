@@ -99,8 +99,8 @@ view: appearances {
 
   dimension: gs {
     label: "Games Started"
-    type: string
-    sql: ${TABLE}.gs ;;
+    type: number
+    sql: to_number(${TABLE}.gs, '999') ;;
   }
 
   dimension: league_id {
@@ -131,5 +131,15 @@ view: appearances {
   measure: count {
     type: count
     drill_fields: [team.name, team.team_id, player.player_id]
+  }
+
+  measure: total_games_played {
+    type: sum
+    sql: ${g_all} ;;
+  }
+
+  measure: total_games_started {
+    type: sum
+    sql: ${gs} ;;
   }
 }

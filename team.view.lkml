@@ -13,6 +13,12 @@ view: team {
     sql: ${TABLE}.ab ;;
   }
 
+  dimension: batting_average {
+    type: number
+    sql: ${h} / nullif(${ab}, 0) ;;
+    value_format_name: decimal_3
+  }
+
   dimension: attendance {
     description: "Home attendance total"
     type: number
@@ -292,8 +298,63 @@ view: team {
     drill_fields: [detail*]
   }
 
+  measure: total_runs_given_up {
+    type: sum
+    sql: ${ra} ;;
+  }
+
+  measure: total_home_runs {
+    type: sum
+    sql: ${hr} ;;
+  }
+
+  measure: total_runs {
+    type: sum
+    sql: ${r} ;;
+  }
+
+  measure: total_wins {
+    type: sum
+    sql: ${w} ;;
+  }
+
+  measure: total_losses {
+    type: sum
+    sql: ${l} ;;
+  }
+
+  measure: total_home_runs_given_up {
+    type: sum
+    sql: ${hra} ;;
+  }
+
+  measure: total_doubles {
+    type: sum
+    sql: ${double} ;;
+  }
+
+  measure: total_triples {
+    type: sum
+    sql: ${triple} ;;
+  }
+
+  measure: total_hits {
+    type: sum
+    sql: ${h} ;;
+  }
+
+  measure: total_at_bats {
+    type: sum
+    sql: ${ab} ;;
+  }
+
+  measure: most_losses {
+    type: max
+    sql: ${l} ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
-    fields: [team_id, name, all_star.count, appearances.count, batting.count, batting_postseason.count, fielding.count, fielding_postseason.count, home_game.count, manager.count, manager_half.count, pitching.count, pitching_postseason.count, salary.count, team_half.count]
+    fields: [team_id, name, year, all_star.count, appearances.count, batting.count, batting_postseason.count, fielding.count, fielding_postseason.count, home_game.count, manager.count, manager_half.count, pitching.count, pitching_postseason.count, salary.count, team_half.count]
   }
 }

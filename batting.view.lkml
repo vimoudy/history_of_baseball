@@ -1,6 +1,12 @@
 view: batting {
   sql_table_name: public.batting ;;
 
+  dimension: batting_average {
+    type: number
+    sql: ${h} / nullif(${ab}, 0) ;;
+    value_format_name: decimal_3
+  }
+
   dimension: ab {
     label: "At Bats"
     type: number
@@ -134,5 +140,50 @@ view: batting {
   measure: count {
     type: count
     drill_fields: [team.name, team.team_id, player.player_id]
+  }
+
+  measure: total_hits {
+    type: sum
+    sql: ${h} ;;
+  }
+
+  measure:  total_at_bats {
+    type:  sum
+    sql: ${ab} ;;
+  }
+
+  measure: total_home_runs {
+    type: sum
+    sql:  ${hr} ;;
+  }
+
+  measure: total_caught_stealing {
+    type: sum
+    sql: ${cs} ;;
+  }
+
+  measure: total_rbis {
+    type: sum
+    sql: ${rbi} ;;
+  }
+
+  measure: total_strikeouts {
+    type: sum
+    sql: ${so} ;;
+  }
+
+  measure: total_stolen_bases {
+    type: sum
+    sql: ${sb} ;;
+  }
+
+  measure: total_triples {
+    type: sum
+    sql: ${triple} ;;
+  }
+
+  measure: total_doubles {
+    type: sum
+    sql: ${double} ;;
   }
 }

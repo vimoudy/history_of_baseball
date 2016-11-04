@@ -5,6 +5,7 @@ view: pitching {
     label: "Opponents Batting Average"
     type: number
     sql: ${TABLE}.baopp ;;
+    value_format_name: decimal_3
   }
 
   dimension: bb {
@@ -40,7 +41,7 @@ view: pitching {
   dimension: era {
     label: "Earned Run Average"
     type: number
-    value_format_name: percent_2
+    value_format_name: decimal_3
     sql: ${TABLE}.era ;;
   }
 
@@ -187,5 +188,68 @@ view: pitching {
   measure: count {
     type: count
     drill_fields: [player.player_id, team.name, team.team_id]
+  }
+
+  measure: total_strikeouts {
+    type: sum
+    sql: ${so} ;;
+  }
+
+  measure: total_wins {
+    type: sum
+    sql: ${w} ;;
+  }
+
+  measure: total_saves {
+    type: sum
+    sql: ${sv} ;;
+  }
+
+  measure: total_wild_pitchs {
+    type: sum
+    sql: ${wp} ;;
+  }
+
+  measure: total_hits {
+    type: sum
+    sql: ${h} ;;
+  }
+
+  measure: total_shutouts{
+    type: sum
+    sql: ${sho} ;;
+  }
+
+  measure: earned_run_average {
+    type: sum
+    sql: ${era} ;;
+    value_format_name: decimal_3
+  }
+
+  measure: average_era {
+    type: average
+    sql: ${era} ;;
+    value_format_name: decimal_3
+  }
+
+  measure: total_games_started {
+    type: sum
+    sql: ${gs} ;;
+  }
+
+  measure: total_losses {
+    type: sum
+    sql: ${l} ;;
+  }
+
+  measure: total_walks {
+    type: sum
+    sql: ${bb} ;;
+  }
+
+  measure: opposing_batting_average {
+    type: average
+    sql: ${baopp} ;;
+    value_format_name: decimal_3
   }
 }

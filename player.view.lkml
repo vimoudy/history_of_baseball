@@ -106,7 +106,6 @@ view: player {
 
   dimension: death_state {
     hidden: yes
-    hidden: yes
     type: string
     sql: ${TABLE}.death_state ;;
   }
@@ -150,6 +149,27 @@ view: player {
   dimension: name_given {
     type: string
     sql: ${TABLE}.name_given ;;
+    link: {
+      label: "Wiki"
+      url: "https://en.wikipedia.org/wiki/{{name_first._value}}_{{name_last._value}}"
+      icon_url: "https://en.wikipedia.org/favicon.ico"
+    }
+
+  }
+
+  dimension: real_name {
+    type: string
+    sql: concat(${name_first} || ' ' || ${name_last}) ;;
+    link: {
+      label: "Wiki"
+      url: "https://en.wikipedia.org/wiki/{{name_first._value}}_{{name_last._value}}"
+      icon_url: "https://en.wikipedia.org/favicon.ico"
+    }
+    link: {
+      label: "Player Stats"
+      url: "https://localhost:9999/dashboards/9?Name={{name_first._value}}%20{{name_last._value}}"
+      icon_url: "https://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: name_last {
@@ -180,5 +200,9 @@ view: player {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [player_id, name_given, all_star.count, appearances.count, batting.count, batting_postseason.count, fielding.count, fielding_outfield.count, fielding_postseason.count, hall_of_fame.count, manager.count, manager_award.count, manager_award_vote.count, manager_half.count, pitching.count, pitching_postseason.count, player_award.count, player_award_vote.count, player_college.count, salary.count]
+  }
+
+  set: hitting_detail {
+    fields: [name_given, batting.h, batting.ab, batting_postseason.h, batting_postseason.ab]
   }
 }

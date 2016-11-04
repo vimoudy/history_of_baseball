@@ -187,4 +187,30 @@ view: pitching_postseason {
     type: count
     drill_fields: [player.player_id, team.name, team.team_id]
   }
+
+  measure: total_wins {
+    type: sum
+    sql: ${w} ;;
+  }
+
+  measure: total_strikeouts {
+    type: sum
+    sql: ${so} ;;
+  }
+
+  measure: total_shutouts {
+    type: sum
+    sql: ${sho} ;;
+  }
+
+  measure: total_games_started {
+    type: sum
+    sql: ${gs} ;;
+  }
+
+  measure: earned_run_average {
+    type: sum
+    sql: ${era} ;;
+    value_format_name: decimal_3
+  }
 }

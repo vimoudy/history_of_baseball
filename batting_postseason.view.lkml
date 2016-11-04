@@ -7,6 +7,12 @@ view: batting_postseason {
     sql: ${TABLE}.ab ;;
   }
 
+  dimension: batting_average {
+    type: number
+    sql: ${h} / nullif(${ab}, 0) ;;
+    value_format_name: decimal_3
+  }
+
   dimension: bb {
     label: "Base on Balls"
     type: number
@@ -136,5 +142,20 @@ view: batting_postseason {
   measure: count {
     type: count
     drill_fields: [player.player_id, team.name, team.team_id]
+  }
+
+  measure: total_hits {
+    type: sum
+    sql:  ${h} ;;
+  }
+
+  measure: total_at_bats {
+    type: sum
+    sql: ${ab} ;;
+  }
+
+  measure: total_home_runs {
+    type:  sum
+    sql: ${hr} ;;
   }
 }

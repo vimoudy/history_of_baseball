@@ -35,4 +35,10 @@ view: salary {
     type: count
     drill_fields: [team.name, team.team_id, player.player_id]
   }
+
+  measure: max_salary {
+    type: max
+    sql: ${salary} ;;
+    value_format_name: usd_0
+  }
 }
