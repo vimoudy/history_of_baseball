@@ -1,6 +1,13 @@
 view: player_award {
   sql_table_name: public.player_award ;;
 
+  dimension: pk {
+    type: string
+    #hidden: yes
+    primary_key: yes
+    sql: ${player_id} || ${award_id} || ${league_id} || ${notes} || ${year} || CASE WHEN ${TABLE}.tie = 'Y' THEN 'Yes' ELSE 'No' END ;;
+  }
+
   dimension: award_id {
     label: "Award Name"
     type: string
@@ -14,7 +21,7 @@ view: player_award {
   }
 
   dimension: notes {
-    label: " Notes About the Award"
+    label: "Notes About the Award"
     type: string
     sql: ${TABLE}.notes ;;
   }

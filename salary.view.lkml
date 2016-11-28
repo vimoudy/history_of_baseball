@@ -14,6 +14,13 @@ view: salary {
     sql: ${TABLE}.player_id ;;
   }
 
+  dimension: pk {
+    type: string
+    primary_key: yes
+    hidden: yes
+    sql: ${player_id} || ${team_id} || ${year} ;;
+  }
+
   dimension: salary {
     type: number
     sql: ${TABLE}.salary ;;
@@ -40,5 +47,15 @@ view: salary {
     type: max
     sql: ${salary} ;;
     value_format_name: usd_0
+  }
+
+  measure: total_salary {
+    type: sum
+    sql: ${salary} ;;
+    value_format_name: usd
+  }
+
+  measure: total_years_played {
+    type: count
   }
 }

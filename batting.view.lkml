@@ -1,10 +1,11 @@
 view: batting {
   sql_table_name: public.batting ;;
 
-  dimension: batting_average {
-    type: number
-    sql: ${h} / nullif(${ab}, 0) ;;
-    value_format_name: decimal_3
+  dimension: pk {
+    type: string
+    primary_key: yes
+    hidden: yes
+    sql: ${player_id} || ${year} || ${team_id} || ${league_id} || ${stint} ;;
   }
 
   dimension: ab {
@@ -142,9 +143,29 @@ view: batting {
     drill_fields: [team.name, team.team_id, player.player_id]
   }
 
+  measure: sum_at_bats {
+    type: sum
+    hidden: yes
+    sql: ${ab} ;;
+  }
+
+  measure: sum_hits {
+    type: sum
+    hidden: yes
+    sql: ${h} ;;
+  }
+
+  measure: batting_average {
+    type: number
+    sql: ${sum_hits} / nullif(${sum_at_bats}, 0) ;;
+    value_format_name: decimal_3
+  }
+
+
   measure: total_hits {
     type: sum
     sql: ${h} ;;
+    drill_fields: [year, total_hits]
   }
 
   measure:  total_at_bats {
@@ -155,14 +176,17 @@ view: batting {
   measure: total_home_runs {
     type: sum
     sql:  ${hr} ;;
+    drill_fields: [year, total_home_runs]
   }
 
   measure: total_caught_stealing {
     type: sum
     sql: ${cs} ;;
+    drill_fields: [total_stolen_bases, total_caught_stealing]
   }
 
   measure: total_rbis {
+    label: "Total RBIs"
     type: sum
     sql: ${rbi} ;;
   }
@@ -175,6 +199,13 @@ view: batting {
   measure: total_stolen_bases {
     type: sum
     sql: ${sb} ;;
+    drill_fields: [player.real_name, year, total_stolen_bases, total_caught_stealing]
+  }
+
+  measure: success_rate {
+    type: number
+    sql: ${total_stolen_bases} / nullif((${total_stolen_bases} + ${total_caught_stealing}), 0 ) ;;
+    value_format_name: percent_2
   }
 
   measure: total_triples {

@@ -8,6 +8,13 @@ view: pitching {
     value_format_name: decimal_3
   }
 
+  dimension: pk {
+    type: string
+    primary_key: yes
+    hidden: yes
+    sql: ${player_id} || ${year} || ${team_id} || ${league_id} || ${stint} ;;
+  }
+
   dimension: bb {
     label: "Walks"
     type: number
@@ -182,7 +189,7 @@ view: pitching {
 
   dimension: year {
     type: number
-    sql: ${TABLE}.year ;;
+    sql: ${TABLE}.year;;
   }
 
   measure: count {
@@ -193,11 +200,13 @@ view: pitching {
   measure: total_strikeouts {
     type: sum
     sql: ${so} ;;
+    drill_fields: [year, total_strikeouts]
   }
 
   measure: total_wins {
     type: sum
     sql: ${w} ;;
+    drill_fields: [year, total_wins]
   }
 
   measure: total_saves {
@@ -220,12 +229,6 @@ view: pitching {
     sql: ${sho} ;;
   }
 
-  measure: earned_run_average {
-    type: sum
-    sql: ${era} ;;
-    value_format_name: decimal_3
-  }
-
   measure: average_era {
     type: average
     sql: ${era} ;;
@@ -235,6 +238,11 @@ view: pitching {
   measure: total_games_started {
     type: sum
     sql: ${gs} ;;
+  }
+
+  measure: total_games_played {
+    type: sum
+    sql: ${g} ;;
   }
 
   measure: total_losses {
@@ -251,5 +259,6 @@ view: pitching {
     type: average
     sql: ${baopp} ;;
     value_format_name: decimal_3
+    drill_fields: [year, baopp]
   }
 }

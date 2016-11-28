@@ -13,12 +13,6 @@ view: team {
     sql: ${TABLE}.ab ;;
   }
 
-  dimension: batting_average {
-    type: number
-    sql: ${h} / nullif(${ab}, 0) ;;
-    value_format_name: decimal_3
-  }
-
   dimension: attendance {
     description: "Home attendance total"
     type: number
@@ -353,8 +347,14 @@ view: team {
     sql: ${l} ;;
   }
 
+  measure: batting_average {
+    type: number
+    sql: ${total_hits}::float / ${total_at_bats}::float ;;
+    value_format_name: decimal_3
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
-    fields: [team_id, name, year, all_star.count, appearances.count, batting.count, batting_postseason.count, fielding.count, fielding_postseason.count, home_game.count, manager.count, manager_half.count, pitching.count, pitching_postseason.count, salary.count, team_half.count]
+    fields: [name, year, total_wins, total_losses, batting_average]
   }
 }

@@ -142,12 +142,14 @@ view: player {
   }
 
   dimension: name_first {
+    hidden: yes
     type: string
     sql: ${TABLE}.name_first ;;
   }
 
   dimension: name_given {
     type: string
+    hidden: yes
     sql: ${TABLE}.name_given ;;
     link: {
       label: "Wiki"
@@ -157,7 +159,7 @@ view: player {
 
   }
 
-  dimension: real_name {
+  dimension: name {
     type: string
     sql: concat(${name_first} || ' ' || ${name_last}) ;;
     link: {
@@ -174,6 +176,7 @@ view: player {
 
   dimension: name_last {
     type: string
+    hidden: yes
     sql: ${TABLE}.name_last ;;
   }
 

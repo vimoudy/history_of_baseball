@@ -62,7 +62,9 @@ explore: batting_postseason {
   }
 }
 
-explore: college {}
+explore: college {
+  hidden: yes
+}
 
 explore: fielding {
   join: player {
@@ -137,6 +139,7 @@ explore: manager {
 }
 
 explore: manager_award {
+  hidden: yes
   join: player {
     type: left_outer
     sql_on: ${manager_award.player_id} = ${player.player_id} ;;
@@ -145,6 +148,7 @@ explore: manager_award {
 }
 
 explore: manager_award_vote {
+  hidden: yes
   join: player {
     type: left_outer
     sql_on: ${manager_award_vote.player_id} = ${player.player_id} ;;
@@ -153,6 +157,7 @@ explore: manager_award_vote {
 }
 
 explore: manager_half {
+  hidden: yes
   join: player {
     type: left_outer
     sql_on: ${manager_half.player_id} = ${player.player_id} ;;
@@ -179,6 +184,12 @@ explore: pitching {
     type: left_outer
     sql_on: ${pitching.team_id} = ${team.team_id} ;;
     relationship: many_to_one
+  }
+
+  join: salary {
+    type: left_outer
+    sql_on: ${pitching.player_id} = ${salary.player_id} ;;
+    relationship: many_to_many
   }
 }
 
@@ -208,6 +219,24 @@ explore: player {
     sql_on: ${batting.player_id} = ${player.player_id} ;;
     relationship: one_to_many
   }
+
+  join: salary{
+    type: left_outer
+    sql_on: ${batting.player_id} = ${salary.player_id} ;;
+    relationship: one_to_many
+  }
+
+  join: player_award {
+    type: left_outer
+    sql_on: ${player.player_id} = ${player_award.player_id} ;;
+    relationship: one_to_many
+  }
+
+  join: pitching {
+    type: left_outer
+    sql_on: ${player.player_id} = ${pitching.player_id};;
+    relationship: one_to_many
+  }
 }
 
 explore: player_award {
@@ -227,6 +256,7 @@ explore: player_award_vote {
 }
 
 explore: player_college {
+  hidden: yes
   join: player {
     type: left_outer
     sql_on: ${player_college.player_id} = ${player.player_id} ;;
@@ -255,6 +285,7 @@ explore: team {}
 explore: team_franchise {}
 
 explore: team_half {
+  hidden: yes
   join: team {
     type: left_outer
     sql_on: ${team_half.team_id} = ${team.team_id} ;;
