@@ -156,7 +156,6 @@ view: player {
       url: "https://en.wikipedia.org/wiki/{{name_first._value}}_{{name_last._value}}"
       icon_url: "https://en.wikipedia.org/favicon.ico"
     }
-
   }
 
   dimension: name {
