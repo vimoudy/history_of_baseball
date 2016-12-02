@@ -167,7 +167,7 @@ view: player {
       icon_url: "https://en.wikipedia.org/favicon.ico"
     }
     link: {
-      label: "Player Stats"
+      label: "Batting Stats"
       url: "https://localhost:9999/dashboards/9?Name={{name_first._value}}%20{{name_last._value}}"
       icon_url: "https://www.looker.com/favicon.ico"
     }

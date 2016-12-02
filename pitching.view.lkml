@@ -126,6 +126,22 @@ view: pitching {
     sql: ${TABLE}.player_id ;;
   }
 
+  dimension: name {
+    label: "Name"
+    type: string
+    sql: ${player.name} ;;
+    link: {
+      label: "Wiki"
+      url: "https://en.wikipedia.org/wiki/{{player.name_first._value}}_{{player.name_last._value}}"
+      icon_url: "https://en.wikipedia.org/favicon.ico"
+    }
+    link: {
+      label: "Pitching Stats"
+      url: "https://localhost:9999/dashboards/11?Name={{player.name_first._value}}%20{{player.name_last._value}}"
+      icon_url: "https://www.looker.com/favicon.ico"
+    }
+  }
+
   dimension: r {
     label: "Runs Allowed"
     type: number
