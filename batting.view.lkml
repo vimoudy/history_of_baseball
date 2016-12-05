@@ -161,7 +161,7 @@ view: batting {
     value_format_name: decimal_3
     link: {
       label: "Batting Stats"
-      url: "https://localhost:9999/dashboards/9?Name={{name_first._filterable_value | url_encode}}%20{{name_last._filterable_value | url_encode}}"
+      url: "https://localhost:9999/dashboards/9?Name={{player.name_first._filterable_value | url_encode}}%20{{player.name_last._filterable_value | url_encode}}"
       icon_url: "https://www.looker.com/favicon.ico"
     }
   }
