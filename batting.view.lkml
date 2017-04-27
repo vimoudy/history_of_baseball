@@ -4,7 +4,7 @@ view: batting{
   dimension: pk {
     type: string
     primary_key: yes
-    hidden: yes
+    #hidden: yes
     sql: ${player_id} || ${year} || ${team_id} || ${league_id} || ${stint} ;;
   }
 

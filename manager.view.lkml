@@ -62,6 +62,14 @@ view: manager {
     sql: ${TABLE}.year ;;
   }
 
+  measure: count_test {
+    type: count
+    filters: {
+      field: team_id
+      value: "as"
+    }
+  }
+
   measure: count {
     type: count
     drill_fields: [player.player_id, team.name, team.team_id]
