@@ -1,10 +1,11 @@
 view: batting{
+  label: ""
   sql_table_name: public.batting ;;
 
   dimension: pk {
     type: string
     primary_key: yes
-    #hidden: yes
+    hidden: yes
     sql: ${player_id} || ${year} || ${team_id} || ${league_id} || ${stint} ;;
   }
 
@@ -137,11 +138,7 @@ view: batting{
   dimension: year {
     type: number
     sql: ${TABLE}.year ;;
-  }
-
-  measure:  test_sum {
-    type: sum
-    sql: ${ab} + ${bb} ;;
+    drill_fields: [rbi]
   }
 
   measure: count {
@@ -165,6 +162,7 @@ view: batting{
     type: number
     sql: ${sum_hits} / nullif(${sum_at_bats}, 0) ;;
     value_format_name: decimal_3
+    drill_fields: [year, batting_average]
   }
 
   measure: batting_average2 {
@@ -176,11 +174,6 @@ view: batting{
       url: "https://localhost:9999/dashboards/9?Name={{ player.name._filterable_value | url_encode }}"
       icon_url: "https://www.looker.com/favicon.ico"
     }
-  }
-
-  measure: test_measure {
-    type: string
-    sql: (SELECT '10000000'::text) ;;
   }
 
   measure: total_hits {
