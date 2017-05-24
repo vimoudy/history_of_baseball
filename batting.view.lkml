@@ -20,6 +20,11 @@ view: batting{
     label: "Base on Balls"
     type: number
     sql: ${TABLE}.bb ;;
+    link: {
+      label: "test"
+      url: "https://www.google.com/{{ _access_filters[batting.h]}}"
+    }
+    html: https://www.google.com/{{ _access_filters[batting.ab]}}  ;;
   }
 
   dimension: cs {
@@ -62,6 +67,7 @@ view: batting{
   dimension: hr {
     label: "Home Runs"
     type: number
+    hidden: yes
     sql: ${TABLE}.hr ;;
   }
 
@@ -191,7 +197,7 @@ view: batting{
   measure: total_home_runs {
     type: sum
     sql:  ${hr} ;;
-    drill_fields: [year, total_home_runs]
+    drill_fields: [year, total_home_runs, hr]
   }
 
   measure: total_caught_stealing {
@@ -205,6 +211,7 @@ view: batting{
     label: "Total RBIs"
     type: sum
     sql: ${rbi} ;;
+    value_format: "0.00E+0"
   }
 
   measure: total_strikeouts {
