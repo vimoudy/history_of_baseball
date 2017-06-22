@@ -53,6 +53,7 @@ view: salary {
     type: sum
     sql: ${salary} ;;
     value_format_name: usd
+    drill_fields: [max_salary, count]
   }
 
   measure: total_years_played {

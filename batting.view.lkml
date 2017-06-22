@@ -1,5 +1,4 @@
 view: batting{
-  label: ""
   sql_table_name: public.batting ;;
 
   dimension: pk {
@@ -20,11 +19,6 @@ view: batting{
     label: "Base on Balls"
     type: number
     sql: ${TABLE}.bb ;;
-    link: {
-      label: "test"
-      url: "https://www.google.com/{{ _access_filters[batting.h]}}"
-    }
-    html: https://www.google.com/{{ _access_filters[batting.ab]}}  ;;
   }
 
   dimension: cs {
@@ -233,7 +227,7 @@ view: batting{
 
   measure: total_triples {
     type: sum
-    sql: ${triple} ;;
+    sql: abs(${triple}) ;;
   }
 
   measure: total_doubles {
