@@ -1,11 +1,14 @@
 - dashboard: Fun Facts
   layout: newspaper
+
+
   embed_config:
     background_color: "#1f467a"
     show_title: true
     title_color: "#3a4245"
     tile_text_color: "#3a4245"
     text_tile_text_color: "#b2375d"
+
   elements:
   - name: Most WS Wins by League
     label: Most WS Wins by League
@@ -574,7 +577,6 @@
     - team.ws_win
     - team.count
     filters:
-      team.name: "%Athletics%"
       team.ws_win: 'Yes'
     sorts:
     - team.count
@@ -606,7 +608,7 @@
     - team.ws_win
     - team.count
     listen:
-      World Series Wins: team.name
+      World_Series_Wins: team.name
     row: 101
     col: 0
     width: 24
@@ -626,7 +628,6 @@
     - team.ws_win
     filters:
       team.lg_win: 'Yes'
-      team.name: Oakland Athletics
     sorts:
     - team.count desc
     - team.ws_win
@@ -672,7 +673,7 @@
     series_colors:
       Yes - Team Count: "#3D6D9E"
     listen:
-      World Series Wins: team.name
+      World_Series_Wins: team.name
     row: 93
     col: 0
     width: 24
@@ -1277,10 +1278,10 @@
     width: 24
     height: 2
   filters:
-  - name: World Series Wins
+  - name: World_Series_Wins
     title: World Series Wins
     type: field_filter
-    default_value: ''
+    default_value: '%Athletics%'
     model: history_of_baseball
     explore: team
     field: team.name
