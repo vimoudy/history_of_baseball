@@ -19,6 +19,8 @@ view: fielding_postseason {
     sql: ${TABLE}.dp ;;
   }
 
+  #foo ba
+
   dimension: e {
     label: "Errors"
     type: number
