@@ -199,6 +199,10 @@ view: player {
     drill_fields: [detail*]
   }
 
+  measure: test_sum {
+    type: sum
+    sql: ${height} ;;
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [player_id, name_given, all_star.count, appearances.count, batting.count, batting_postseason.count, fielding.count, fielding_outfield.count, fielding_postseason.count, hall_of_fame.count, manager.count, manager_award.count, manager_award_vote.count, manager_half.count, pitching.count, pitching_postseason.count, player_award.count, player_award_vote.count, player_college.count, salary.count]

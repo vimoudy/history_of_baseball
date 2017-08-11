@@ -619,13 +619,13 @@
     explore: team
     type: looker_donut_multiples
     fields:
-    - team.ws_win
+    #- team.ws_win
     - team.count
     - team.name
     pivots:
     - team.ws_win
     fill_fields:
-    - team.ws_win
+    #- team.ws_win
     filters:
       team.lg_win: 'Yes'
     sorts:

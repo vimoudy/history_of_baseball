@@ -171,6 +171,10 @@ view: team {
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
+    link: {
+      label: "Fun Fact Dashboard!"
+      url: "https://self-signed.looker.com:9999/dashboards/12?World%20Series%20Wins={{ _filters['team.name'] | url_encode}}"
+    }
   }
 
   dimension: park {
