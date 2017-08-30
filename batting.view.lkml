@@ -10,7 +10,7 @@ view: batting{
 
   dimension: ab {
     description: "Player at Bats"
-    #label: "At Bats"
+    label: "At Bats"
     type: number
     sql: ${TABLE}.ab ;;
   }
