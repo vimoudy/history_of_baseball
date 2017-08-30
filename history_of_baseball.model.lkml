@@ -24,6 +24,7 @@ explore: all_star {
 
 explore: appearances {
   join: team {
+    fields: []
     type: left_outer
     sql_on: ${appearances.team_id} = ${team.team_id} ;;
     relationship: many_to_one

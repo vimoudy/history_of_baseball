@@ -138,6 +138,11 @@ view: appearances {
     sql: ${g_all} ;;
   }
 
+  measure: test {
+    type: number
+    sql: ${count} + ${team.total_triples} ;;
+  }
+
   measure: total_games_started {
     type: sum
     sql: ${gs} ;;
