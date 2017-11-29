@@ -9,7 +9,6 @@ include: "*.dashboard"
 explore: all_star {
   fields: [ALL_FIELDS*]
   join: team {
-
     type: left_outer
     sql_on: ${all_star.team_id} = ${team.team_id} ;;
     relationship: many_to_one
@@ -286,6 +285,8 @@ explore: salary {
 explore: team {}
 
 explore: team_franchise {}
+
+explore: pdt {}
 
 explore: team_half {
   hidden: yes

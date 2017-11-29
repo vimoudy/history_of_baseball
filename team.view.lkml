@@ -258,7 +258,6 @@ view: team {
 
   dimension: team_id_retro {
     label: "Team ID"
-    label: "Retrosheet"
     type: string
     sql: ${TABLE}.team_id_retro ;;
   }

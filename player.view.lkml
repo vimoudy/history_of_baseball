@@ -200,8 +200,8 @@ view: player {
   }
 
   measure: test_sum {
-    type: sum
-    sql: ${height} ;;
+    type: number
+    sql: SUM(${height}) ;;
   }
   # ----- Sets of fields for drilling ------
   set: detail {
