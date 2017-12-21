@@ -2,7 +2,8 @@ view: pdt {
   derived_table: {
     sql:
       SELECT *
-      FROM public.batting ;;
+      FROM public.batting
+      ;;
     sql_trigger_value: SELECT NOW() ;;
     indexes: ["year"]
   }
