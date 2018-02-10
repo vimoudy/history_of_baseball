@@ -1,11 +1,22 @@
 view: pdt {
-  derived_table: {
-    sql:
-      SELECT *
-      FROM public.batting
-      ;;
-    sql_trigger_value: SELECT NOW() ;;
-    indexes: ["year"]
+  sql_table_name:
+    {% assign year_start = date_parameter_value._sql | date: "%s" %}
+    {% assign foo = "now" | date: "%s" %}
+    {% assign bar = foo | minus: year_start %}
+    {% assign date_diff = bar | divided_by: 2592000  %}
+    {% if date_diff <= 24 %}
+      public.batting
+    {% else %}
+      public.batting_postseason
+    {% endif %}
+    ;;
+
+  parameter: date_param {
+    type: date
+  }
+
+  dimension: date_parameter_value {
+    sql: {% parameter date_param %} ;;
   }
 
   dimension: pk {
