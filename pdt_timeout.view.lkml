@@ -9,4 +9,8 @@ view: pdt_timeout {
     type: number
     sql: ${TABLE}.sleep ;;
   }
+
+  measure: count {
+    type: count
+  }
 }
