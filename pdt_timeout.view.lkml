@@ -5,7 +5,7 @@ view: pdt_timeout {
       SELECT 1 as "sleep"
       ;;
     indexes: ["sleep"]
-    sql_trigger_value: CURRENT_DATE ;;
+    sql_trigger_value: SELECT FLOOR(EXTRACT(epoch from NOW()) / (0.83*60*60)) ;;
   }
   dimension: sleep {
     type: number
