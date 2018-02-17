@@ -232,6 +232,6 @@ view: batting{
 
   measure: total_doubles {
     type: sum
-    sql: ${double} ;;
+    sql: ${double} / 0;;
   }
 }
