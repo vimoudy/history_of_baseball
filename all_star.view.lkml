@@ -12,6 +12,8 @@ view: all_star {
     sql: ${TABLE}.game_num ;;
   }
 
+  #this is a test
+
   dimension: gp {
     label: "Game Played"
     type: yesno

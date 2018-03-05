@@ -1,14 +1,6 @@
 - dashboard: Fun Facts
   layout: newspaper
 
-
-  embed_config:
-    background_color: "#1f467a"
-    show_title: true
-    title_color: "#3a4245"
-    tile_text_color: "#3a4245"
-    text_tile_text_color: "#b2375d"
-
   elements:
   - name: Most WS Wins by League
     label: Most WS Wins by League
