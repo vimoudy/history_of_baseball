@@ -1,6 +1,8 @@
 view: all_star {
   sql_table_name: public.all_star ;;
 
+  #test comment
+
   dimension: game_id {
     type: string
     sql: ${TABLE}.game_id ;;
