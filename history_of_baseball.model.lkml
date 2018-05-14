@@ -18,7 +18,6 @@ explore: all_star {
     relationship: many_to_one
   }
 
-
   join: player {
     type: left_outer
     sql_on: ${all_star.player_id} = ${player.player_id} ;;
