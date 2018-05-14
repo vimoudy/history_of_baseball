@@ -1,10 +1,10 @@
 connection: "history_of_baseball"
 
 # include all the views
-include: "*.view"
+include: "../Views/*.view"
 
 # include all the dashboards
-include: "*.dashboard.lookml"
+include: "../Dashboards/*.dashboard.lookml"
 
 datagroup: foo {
   sql_trigger: SELECT 1 ;;
