@@ -7,6 +7,8 @@ view: fielding {
     sql: ${TABLE}.a ;;
   }
 
+
+
   dimension: cs {
     label: "Opponents Caught Stealing(by Catcher)"
     type: number
