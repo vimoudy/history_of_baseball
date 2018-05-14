@@ -10,6 +10,8 @@ datagroup: foo {
   sql_trigger: SELECT 1 ;;
 }
 
+
+
 explore: all_star {
   fields: [ALL_FIELDS*]
   join: team {
