@@ -10,10 +10,6 @@ datagroup: foo {
   sql_trigger: SELECT 1 ;;
 }
 
-explore: pdt_timeout {
-  persist_for: "0 seconds"
-}
-
 explore: all_star {
   fields: [ALL_FIELDS*]
   join: team {
