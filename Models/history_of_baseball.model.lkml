@@ -6,12 +6,6 @@ include: "../Views/*.view"
 # include all the dashboards
 include: "../Dashboards/*.dashboard.lookml"
 
-datagroup: foo {
-  sql_trigger: SELECT 1 ;;
-}
-
-
-
 explore: all_star {
   fields: [ALL_FIELDS*]
   join: team {
